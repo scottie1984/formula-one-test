@@ -1,35 +1,37 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import App from './App';
-import nock from 'nock';
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import App from "./App";
+import nock from "nock";
 
-nock('http://localhost')
-    .persist()
-    .get('/api/seasons')
-    .reply(200, {
-        response: ['2001', '2002'],
-    });
+nock("http://localhost")
+  .persist()
+  .get("/api/seasons")
+  .reply(200, {
+    response: ["2001", "2002"],
+  });
 
-nock('http://localhost')
-    .persist()
-    .get('/api/rankings/drivers')
-    .query({season : 2001})
-    .reply(200, {
-        response: [
-          { position: 1, driver: { name: 'Stephen Scott', number: 10 }, points: 44 }
-        ],
-    });
+nock("http://localhost")
+  .persist()
+  .get("/api/rankings/drivers")
+  .query({ season: 2001 })
+  .reply(200, {
+    response: [
+      {
+        position: 1,
+        driver: { name: "Stephen Scott", number: 10 },
+        points: 44,
+      },
+    ],
+  });
 
-nock('http://localhost')
-    .persist()
-    .get('/api/rankings/teams')
-    .query({season : 2001})
-    .reply(200, {
-        response: [
-          { position: 1, team: { name: 'Audi' }, points: 6 }
-        ],
-    });
+nock("http://localhost")
+  .persist()
+  .get("/api/rankings/teams")
+  .query({ season: 2001 })
+  .reply(200, {
+    response: [{ position: 1, team: { name: "Audi" }, points: 6 }],
+  });
 
-test('should display the list of seasons', async () => {
+test("should display the list of seasons", async () => {
   render(<App />);
 
   await waitFor(() => {
@@ -38,15 +40,15 @@ test('should display the list of seasons', async () => {
 
     expect(seasonBtn2001).toBeInTheDocument();
     expect(seasonBtn2002).toBeInTheDocument();
-  })
+  });
 });
 
-test('clicking season should display drivers rankings by default', async () => {
+test("clicking season should display drivers rankings by default", async () => {
   render(<App />);
-  
+
   await waitFor(() => {
     const seasonBtn2001 = screen.getByTestId("season-button-2001");
-    fireEvent.click(seasonBtn2001)
+    fireEvent.click(seasonBtn2001);
 
     const season2001 = screen.getByText("Rankings for season 2001");
     const driversTable = screen.getByTestId("drivers-table");
@@ -55,14 +57,16 @@ test('clicking season should display drivers rankings by default', async () => {
   });
 });
 
-test('clicking season should display drivers position, name, image, number and points', async () => {
+test("clicking season should display drivers position, name, image, number and points", async () => {
   render(<App />);
 
   await waitFor(() => {
     const seasonBtn2001 = screen.getByTestId("season-button-2001");
-    fireEvent.click(seasonBtn2001)
-    
-    const driversTablePosition0 = screen.getByTestId("drivers-table-position-0");
+    fireEvent.click(seasonBtn2001);
+
+    const driversTablePosition0 = screen.getByTestId(
+      "drivers-table-position-0"
+    );
     const driversTableName0 = screen.getByTestId("drivers-table-name-0");
     const driversTableImage0 = screen.getByTestId("drivers-table-image-0");
     const driversTableNumber0 = screen.getByTestId("drivers-table-number-0");
@@ -70,22 +74,22 @@ test('clicking season should display drivers position, name, image, number and p
 
     expect(driversTablePosition0.textContent).toBe("1");
     expect(driversTableName0.textContent).toBe("Stephen Scott");
-    expect(driversTableImage0).toBeInTheDocument();;
+    expect(driversTableImage0).toBeInTheDocument();
     expect(driversTableNumber0.textContent).toBe("10");
     expect(driversTablePoints0.textContent).toBe("44");
   });
 });
 
-test('clicking toggle switch should switch to teams rankings', async () => {
+test("clicking toggle switch should switch to teams rankings", async () => {
   render(<App />);
 
   await waitFor(() => {
     const seasonBtn2001 = screen.getByTestId("season-button-2001");
-    fireEvent.click(seasonBtn2001)
+    fireEvent.click(seasonBtn2001);
 
     const teamsBtnSwitch = screen.getByTestId("teams-button");
-    fireEvent.click(teamsBtnSwitch)
-    
+    fireEvent.click(teamsBtnSwitch);
+
     const season2001 = screen.getByText("Rankings for season 2001");
     const teamsTable = screen.getByTestId("teams-table");
     expect(season2001).toBeInTheDocument();
@@ -93,20 +97,20 @@ test('clicking toggle switch should switch to teams rankings', async () => {
   });
 });
 
-test('teams table should show position, name, logo, points', async () => {
+test("teams table should show position, name, logo, points", async () => {
   render(<App />);
 
   await waitFor(() => {
     const seasonBtn2001 = screen.getByTestId("season-button-2001");
-    fireEvent.click(seasonBtn2001)
+    fireEvent.click(seasonBtn2001);
 
     const teamsBtnSwitch = screen.getByTestId("teams-button");
-    fireEvent.click(teamsBtnSwitch)
+    fireEvent.click(teamsBtnSwitch);
 
     // //await the change
     // const season2001 = await screen.findByText("Rankings for season 2001");
     // const teamsTable = await screen.getByTestId("teams-table");
-    
+
     const teamsTablePosition0 = screen.getByTestId("teams-table-position-0");
     const teamsTableName0 = screen.getByTestId("teams-table-name-0");
     const teamsTableLogo0 = screen.getByTestId("teams-table-logo-0");
@@ -114,7 +118,7 @@ test('teams table should show position, name, logo, points', async () => {
 
     expect(teamsTablePosition0.textContent).toBe("1");
     expect(teamsTableName0.textContent).toBe("Audi");
-    expect(teamsTableLogo0).toBeInTheDocument();;
+    expect(teamsTableLogo0).toBeInTheDocument();
     expect(teamsTablePoints0.textContent).toBe("6");
   });
 });

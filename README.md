@@ -1,6 +1,6 @@
 ## Setup
 
-Get an API key for api sports  
+Get an API key for api sports
 
 ### `npm install`
 
@@ -25,13 +25,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 It took me 1 hour to get the API integration to work as I ended up hitting issues with subscriptions as there are 2 routes to signing up and I selected the wrong one initially. I then hit issues with CORS that I resolved by setting up a proxy. I also hit rate limiting issues with the API which also slowed down progress. This is a lot longer than I would have hoped and meant I had less time to complete some items I would have liked to do:
 
-* Use react-table to get out of the box sorting and filtering
-* the api response was already sorted as per the brief - I therefore didn't sort again - although given time I would have
-* Error handling
-* Find an actual toggle component rather than a button
-* Align the design more with the Figma
-* Move the inline styles into the CSS files
-* Add types
-* set up a proper node serve for the proxy rather than relying on create-react-app
-* add transition states for loading
-
+- Use react-table to get out of the box sorting and filtering
+- the api response was already sorted as per the brief - I therefore didn't sort again - although given time I would have
+- Error handling
+- Find an actual toggle component rather than a button
+- Align the design more with the Figma
+- Move the inline styles into the CSS files
+- Add types
+- set up a proper node serve for the proxy rather than relying on create-react-app
+- add transition states for loading
