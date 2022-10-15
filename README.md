@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+## Setup
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Get an API key for api sports  
+
+### `npm install`
+
+## API_KEY
+
+API key for api sports must be added to process environment variables. I have detailed below how to start the project with the key. If you do not have a key to test please reach out to me on scottie1984@gmail.com and I can provide one.
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+### `API_KEY=xxxx npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Notes:
 
-### `npm run build`
+It took me 1 hour to get the API integration to work as I ended up hitting issues with subscriptions as there are 2 routes to signing up and I selected the wrong one initially. I then hit issues with CORS that I resolved by setting up a proxy. I also hit rate limiting issues with the API which also slowed down progress. This is a lot longer than I would have hoped and meant I had less time to complete some items I would have liked to do:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+*** Use react-table to get out of the box sorting and filtering
+*** the api response was already sorted as per the brief - I therefore didn't sort again - although given time I would have
+*** Error handling
+*** Find an actual toggle component rather than a button
+*** Align the design more with the Figma
+*** Move the inline styles into the CSS files
+*** Add types
+*** set up a proper node serve for the proxy rather than relying on create-react-app
+*** add transition states for loading
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
